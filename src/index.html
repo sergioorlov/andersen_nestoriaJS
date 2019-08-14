@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+    <title>Nestoria</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <div class="search">
+            <input class="city_search" id="inputText" type="text" name="city" placeholder="Example: London"
+                minlength="1" pattern="[A-Za-z]" required>
+            <img class="img_search" id="buttonSearch" src="img/search.png">
+            <img class="favourites_block" src="img/favourites_folder.png">
+
+            <div class='overall_div'></div>
+            <div class="btn-block"></div>
+        </div>
+
+        <div class="plates"></div>
+        <a id="showMoreButton" class="show-more">Show more</a>
+
+        <div class="back_modal"></div>
+        <div class="modal">
+            <div class="plate_favourites"></div>
+            <div class="line_close"></div>
+            <span class="close"></span>
+            <img class="modal_img">
+            <div class="modal_text">
+                <span class="modal_title"></span><br>
+                <span class="modal_features">Property features</span><br><br>
+                <div>Price: <span class="modal_price"></span></div><br>
+                <div><span class="modal_bathroom"></span> bathroom</div><br>
+                <div><span class="modal_bedroom"></span> bedroom</div><br>
+                <div>Property type: <span class="modal_type"></span></div>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="index.js"></script>
+
+
+
+</body>
+
+</html>
