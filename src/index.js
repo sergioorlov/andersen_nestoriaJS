@@ -102,7 +102,7 @@ function loadStorage(event) {
 }
 
 function addScript(src) {
-  let wrap = document.body.querySelector(".wrapper");
+  //let wrap = document.body.querySelector(".wrapper");
   let script = document.createElement("SCRIPT");
   script.src = src;
   document.head.appendChild(script);
@@ -331,9 +331,10 @@ function createPlatesForLocalStorage(obj) {
   let plateFavouritesBlock = document.createElement("div");
   let plateFavouritesText = document.createElement("span");
   plateFavouritesText.innerHTML = "Delete";
+  plateFavouritesText.style.color = "#fafafa";
   let plateFavourites = document.createElement("img");
   plateFavouritesBlock.classList.add("favourites", "favourites_del");
-  plateFavourites.src = "img/del_favourites.png";
+  plateFavourites.src = "img/trash.png";
   plateFavouritesBlock.appendChild(plateFavourites);
   plateFavouritesBlock.append(plateFavouritesText);
 
