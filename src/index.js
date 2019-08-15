@@ -1,11 +1,10 @@
-"use strict";
 let citySearch = document.querySelector(".city_search");
 let search = document.querySelector(".search");
 let mas = [];
 
 let overallDiv = document.querySelector(".overall_div");
 let option = document.querySelectorAll("option");
-let imgSearch = document.querySelector(".img_search");
+let btnSearch = document.querySelector(".btn-search");
 let plates = document.querySelector(".plates");
 let backModal = document.querySelector(".back_modal");
 let modal = document.querySelector(".modal");
@@ -39,7 +38,7 @@ document.body.addEventListener("click", function() {
 
 let page = 1;
 citySearch.addEventListener("input", autocomplete);
-imgSearch.addEventListener("click", dataLoad);
+btnSearch.addEventListener("click", dataLoad);
 plates.addEventListener("click", plate);
 favouritesBtn.addEventListener("click", loadStorage);
 showMore.addEventListener("click", function() {
@@ -102,7 +101,6 @@ function loadStorage(event) {
 }
 
 function addScript(src) {
-  //let wrap = document.body.querySelector(".wrapper");
   let script = document.createElement("SCRIPT");
   script.src = src;
   document.head.appendChild(script);
@@ -112,8 +110,7 @@ function plate(event) {
   // console.log(event.target);
   if (event.target.classList.contains("favourites")) {
     if (event.target.classList.contains("no-active")) {
-      event.target.src = "img/favourites.png";
-      event.target.className = "favourites active";
+      event.target.className = "favourites active icon-on";
       objectElement.listings.forEach(function(item) {
         if (
           event.target.previousElementSibling.childNodes[1].innerHTML ===
@@ -123,8 +120,7 @@ function plate(event) {
         }
       });
     } else if (event.target.classList.contains("active")) {
-      event.target.src = "img/no_favourites.png";
-      event.target.className = "favourites no-active";
+      event.target.className = "favourites no-active icon-off";
       objectElement.listings.forEach(function(item) {
         if (
           event.target.previousElementSibling.childNodes[1].innerHTML ===
@@ -201,12 +197,12 @@ function dataLoad() {
   if (citySearch.value < 1) {
     alert("Enter a value in the search field!");
   }
-  let citySearchTwo = document
+  let citySearchVal = document
     .querySelector(".city_search")
     .value.toLowerCase();
   addScript(
     "https://api.nestoria.co.uk/api?encoding=json&pretty=1&action=search_listings&country=uk&listing_type=rent&place_name=" +
-      citySearchTwo +
+      citySearchVal +
       "&page=" +
       page +
       "&callback=createElement"
@@ -278,20 +274,18 @@ function createPlates(obj) {
   let plateDescription = document.createElement("span");
   plateDescription.className = "plate_description";
   plateDescription.innerHTML = obj.summary;
-  let plateFavourites = document.createElement("img");
+  let plateFavourites = document.createElement("button");
   let localKey = [];
   for (let localStorageKey in localStorage) {
     localKey.push(localStorageKey);
   }
   if (localKey.indexOf(obj.title) !== -1) {
-    plateFavourites.classList.add("favourites", "active");
-    plateFavourites.src = "img/favourites.png";
+    plateFavourites.classList.add("favourites", "active", "icon-on");
   } else {
-    plateFavourites.classList.add("favourites", "no-active");
-    plateFavourites.src = "img/no_favourites.png";
+    plateFavourites.classList.add("favourites", "no-active", "icon-off");
   }
-  plateFavourites.style.width = "30px";
-  plateFavourites.style.height = "30px";
+  plateFavourites.style.width = "50px";
+  plateFavourites.style.height = "50px";
   plateFavourites.style.position = "absolute";
   plateFavourites.style.bottom = "20px";
   plateFavourites.style.right = "20px";
@@ -329,24 +323,17 @@ function createPlatesForLocalStorage(obj) {
   plateDescription.innerHTML = obj.summary;
 
   let plateFavouritesBlock = document.createElement("div");
-  let plateFavouritesText = document.createElement("span");
-  plateFavouritesText.innerHTML = "Delete";
-  plateFavouritesText.style.color = "#fafafa";
-  let plateFavourites = document.createElement("img");
+  let plateFavouritesBtn = document.createElement("button");
+  plateFavouritesBtn.innerHTML = "Delete";
+  plateFavouritesBtn.classList = "btn-delete btn";
   plateFavouritesBlock.classList.add("favourites", "favourites_del");
-  plateFavourites.src = "img/trash.png";
-  plateFavouritesBlock.appendChild(plateFavourites);
-  plateFavouritesBlock.append(plateFavouritesText);
-
-  plateFavourites.style.verticalAlign = "middle";
-  plateFavourites.style.width = "30px";
-  plateFavourites.style.height = "30px";
+  plateFavouritesBtn.style.verticalAlign = "middle";
+  plateFavouritesBtn.style.borderRadius = "5px";
+  plateFavouritesBtn.style.paddingRight = "5px";
   plateFavouritesBlock.style.position = "absolute";
   plateFavouritesBlock.style.bottom = "20px";
   plateFavouritesBlock.style.right = "20px";
-  plateFavouritesBlock.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-  plateFavouritesBlock.style.borderRadius = "5px";
-  plateFavouritesBlock.style.paddingRight = "5px";
+  plateFavouritesBlock.append(plateFavouritesBtn);
 
   plateText.appendChild(platePrice);
   plateText.appendChild(plateTitle);

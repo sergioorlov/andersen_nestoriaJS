@@ -10,7 +10,7 @@ body {
 .search {
     position: relative;
     margin: 0 auto;
-    width: 400px;
+    width: 600px;
     height: 60px;
     top: 100px;
     margin-bottom: 250px;
@@ -27,9 +27,11 @@ body {
 }
 
 .search input[type="text"] {
-    width: 196px;
+    width: 250px;
+    height: 30px;
+    font-size: 18px;
     margin-left: 40px;
-    margin-top: 5px;
+    margin-top: 10px;
     opacity: 1;
 }
 
@@ -55,40 +57,14 @@ body {
     overflow: auto;
 }
 
-.img_search {
-    width: 18px;
-    height: 18px;
+.btn-search {
     position: absolute;
-    top: 10px;
-    left: 250px;
-}
-
-.img_search:active {
-    padding: 2px;
-}
-
-.delete {
-    width: 18px;
-    height: 18px;
-    position: absolute;
-    top: 10px;
-    left: 300px;
-}
-
-.delete:active {
-    padding: 2px;
+    left: 50px;
 }
 
 .favourites_block {
-    width: 25px;
-    height: 25px;
     position: absolute;
-    top: 6px;
-    left: 350px;
-}
-
-.favourites_block:active {
-    padding: 2px;
+    left: 100px;
 }
 
 .plates {
@@ -310,4 +286,16 @@ body {
 
 .btn-exit {
     background: rgb(46, 230, 0) linear-gradient(rgb(104, 231, 50), rgb(185, 255, 159));
+}
+
+.icon-on {
+    background-image: url("img/favourites.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.icon-off {
+    background-image: url("img/no_favourites.png");
+    background-position: center;
+    background-repeat: no-repeat;
 }
